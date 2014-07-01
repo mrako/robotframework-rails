@@ -1,7 +1,12 @@
 env: "test"
 
+seeds:
+  dirs: "mkdir -p robot/seeds"
+  db: "mysqldump -u root <dev db name> | gzip > robot/seeds/database_seeds.sql.gz"
+  solr: "tar cfz robot/seeds/solr_data.tgz solr/data/development/*"
+
 prepare:
-  db: "gunzip < robot/seeds/database_seeds.sql.gz | mysql -u root trail_test"
+  db: "gunzip < robot/seeds/database_seeds.sql.gz | mysql -u root <test db name>"
   solr: "mkdir -p solr/data/test && tar xfz robot/seeds/solr_data.tgz -C solr/data/test"
 
 setup:

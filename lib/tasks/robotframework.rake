@@ -46,6 +46,14 @@ $port = $config['port'] || 3333
 
 
 namespace :robot do
+  desc "Create seeds"
+  task :create_seeds do
+    $config['seeds'].each{ |k, v|
+      puts "Creating #{k} seeds"
+      sh "#{v}"
+    }
+  end
+
   desc "Prepare"
   task :prepare do
     $config['prepare'].each{ |k, v|
