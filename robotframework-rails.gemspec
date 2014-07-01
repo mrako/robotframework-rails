@@ -4,13 +4,13 @@ require "robotframework/version"
 
 Gem::Specification.new do |s|
   s.name        = "robotframework-rails"
-  s.version     = RobotframeworkRails::VERSION
+  s.version     = Robotframework::VERSION
   s.platform    = Gem::Platform::RUBY
   s.license     = ""
   s.authors     = ["Marko Klemetti"]
   s.email       = "marko.klemetti@gmail.com"
   s.homepage    = "http://github.com/mrako/robotframework-rails"
-  s.summary     = "robotframework-rails-#{RobotframeworkRails::VERSION}"
+  s.summary     = "robotframework-rails-#{Robotframework::VERSION}"
   s.description = "Robot Framework Runner for Rails"
 
   s.files            = `git ls-files -- lib/*`.split("\n")
