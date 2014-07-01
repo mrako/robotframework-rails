@@ -1,0 +1,13 @@
+env: "test"
+
+prepare:
+  db: "gunzip < robot/seeds/database_seeds.sql.gz | mysql -u root trail_test"
+  solr: "mkdir -p solr/data/test && tar xfz robot/seeds/solr_data.tgz -C solr/data/test"
+
+setup:
+  sunspot: "rake sunspot:solr:start"
+  delayed_job: "script/delayed_job start"
+
+teardown:
+  sunspot: "rake sunspot:solr:stop"
+  delayed_job: "script/delayed_job stop"
