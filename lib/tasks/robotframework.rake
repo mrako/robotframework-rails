@@ -1,12 +1,11 @@
-$port = $config['port'] || 3333
 
-$report_dir = 'robot/reports'
-$test_dir = 'robot/tests'
+def load_config(path = "config/robot.yml")
+  config_path = "#{Rails.root}/#{path}"
 
-config_path = "#{Rails.root}/config/robot.yml"
-if File.exists?(config_path)
-  File.open(config_path, 'r') do |file|
-    $config = YAML::load(file)
+  if File.exists?(config_path)
+    File.open(config_path, 'r') do |file|
+      $config = YAML::load(file)
+    end
   end
 end
 
@@ -34,6 +33,16 @@ rescue Timeout::Error
   puts "Server startup failed"
   throw :task_has_failed
 end
+
+
+
+load_config()
+
+$report_dir = 'robot/reports'
+$test_dir = 'robot/tests'
+
+$port = $config['port'] || 3333
+
 
 
 namespace :robot do
